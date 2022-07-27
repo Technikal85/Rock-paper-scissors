@@ -1,7 +1,17 @@
+ //A basic console RPS game.
+
  function game() {
+
+//This for loop runs the game five times
+
     for (i = 0; i < 5; i++) {
+
+//Assigns the computer choic and player choice functions to variables
+
         let playerSelection = playerChoice();
         const computerSelection = getComputerChoice();
+
+//This function selects a whole integer on behalf of the pc
 
         function getComputerChoice() {
             const rndInt = Math.floor(Math.random() * 3) + 1
@@ -13,14 +23,22 @@
             } else {return("Scissors")}
         }
 
+//This function prompts and returns player choice
+
         function playerChoice() {
             choice = prompt("Enter rock, paper, scissors").toLowerCase();
             return(choice)
         }
 
+//The variable score activates the comparison function
+
         const score = playRound(playerSelection, computerSelection)
-        
+
+//Prints results to console
+
         console.log(score);
+
+//Comparison logic for game
 
         function playRound() {
             if (playerSelection == "rock" && computerSelection == "Paper") {

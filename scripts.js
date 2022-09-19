@@ -1,17 +1,36 @@
- //A basic console RPS game.
+//Assigns a click event that activates game
+let score1 = 0;
+let score2 = 0;
 
- function game() {
+document.querySelector('#rock').addEventListener('click', playerChoice1);
+document.querySelector('#paper').addEventListener('click', playerChoice2);
+document.querySelector('#scissors').addEventListener('click', playerChoice3);
+ 
+let playerSelection;
 
-//This for loop runs the game five times
+function playerChoice1() {
+    playerSelection = 'rock';
+}
 
-    for (i = 0; i < 5; i++) {
+function playerChoice2() {
+    playerSelection = 'paper';
+}
 
-//Assigns the computer choic and player choice functions to variables
+function playerChoice3() {
+    playerSelection = 'scissors';
+}
 
-        let playerSelection = playerChoice();
+const btn = document.querySelectorAll('.btn');
+
+btn.forEach(btn => btn.addEventListener('click', game))
+
+function game() {
+
+//Assigns the computer choice functions to variables
+
         const computerSelection = getComputerChoice();
 
-//This function selects a whole integer on behalf of the pc
+//This function selects a whole integer and assigns, permanently, a rock, paper, scissor designation on behalf of the pc
 
         function getComputerChoice() {
             const rndInt = Math.floor(Math.random() * 3) + 1
@@ -23,20 +42,30 @@
             } else {return("Scissors")}
         }
 
-//This function prompts and returns player choice
-
-        function playerChoice() {
-            choice = prompt("Enter rock, paper, scissors").toLowerCase();
-            return(choice)
-        }
-
-//The variable score activates the comparison function
+//This variable activates the comparison function
 
         const score = playRound(playerSelection, computerSelection)
 
 //Prints results to console
+        
+        document.querySelector('.results').textContent = `Results: ${score}`;
+        const you = document.querySelector('#score1');
+        const comp = document.querySelector('#score2');
+        
 
-        console.log(score);
+        if(score === "Victory!") {
+            score1++
+            you.textContent = score1
+        } else if(score === "You Lose...") {
+            score2++
+            comp.textContent = score2
+        }
+        
+        if(score1 === 3 || score2 === 3) {
+            document.getElementById('rock').disabled = true;
+            document.getElementById('paper').disabled = true;
+            document.getElementById('scissors').disabled = true;
+        }
 
 //Comparison logic for game
 
@@ -61,8 +90,10 @@
                 return("It's a draw.")
             }
         }
-    }
-}
+      }    
+    
+
+ 
 
 
 

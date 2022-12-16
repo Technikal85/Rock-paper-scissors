@@ -39,7 +39,9 @@ function game() {
                 return("Rock")
             } else if (rndInt === 2) {
                 return("Paper")
-            } else {return("Scissors")}
+            } else if (rndInt === 3) {
+                return("Scissors")
+            }
         }
 
 //This variable activates the comparison function
@@ -77,13 +79,13 @@ function game() {
             } else if (playerSelection == "rock" && computerSelection == "Rock"){
                 return("It's a draw.")
             } else if (playerSelection == "scissors" && computerSelection == "Rock") {
-                return("You Lose..")
+                return("You Lose...")
             } else if (playerSelection == "scissors" && computerSelection == "Paper") {
                 return("Victory!")
             } else if (playerSelection == "scissors" && computerSelection == "Scissors"){
                 return("It's a draw.")
             } else if (playerSelection == "paper" && computerSelection == "Scissors") {
-                return("You Lose..")
+                return("You Lose...")
             } else if (playerSelection == "paper" && computerSelection == "Rock") {
                 return("Victory!")
             } else if (playerSelection == "paper" && computerSelection == "Paper"){
